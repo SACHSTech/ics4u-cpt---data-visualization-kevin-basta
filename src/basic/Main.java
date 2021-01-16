@@ -29,6 +29,6 @@ public class Main {
         }
 
         japanLargestCompanies.close();
-
+        System.out.println(data[247][0]);
     }
 }
