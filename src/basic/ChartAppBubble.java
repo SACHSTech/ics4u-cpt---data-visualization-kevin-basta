@@ -1,4 +1,4 @@
-package charts;
+package basic;
 
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 /**
  * An advanced bubble chart with a variety of actions and settable properties.
  */
-public class BubbleChartApp extends Application {
+public class ChartAppBubble extends Application {
  
     private BubbleChart<Number, Number> chart;
     private NumberAxis xAxis;
@@ -29,7 +29,7 @@ public class BubbleChartApp extends Application {
         final BubbleChart<Number, Number> bc = new BubbleChart<>(xAxis, yAxis);
         // setup chart
         final String bubbleChartCss =
-            getClass().getResource("BubbleChart.css").toExternalForm();
+            getClass().getResource("ChartAppBubbleStyle.css").toExternalForm();
         bc.getStylesheets().add(bubbleChartCss);
         bc.setTitle("Advanced BubbleChart");
         xAxis.setLabel("X Axis");

@@ -1,5 +1,5 @@
-package charts;
- 
+package basic;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * A circular chart divided into segments. The value of each segment represents
  * a proportion of the total.
  */
-public class PieChartApp extends Application {
+public class ChartAppPie extends Application {
  
     private PieChart chart;
  

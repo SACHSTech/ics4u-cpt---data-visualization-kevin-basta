@@ -1,5 +1,5 @@
 /* ....Show License.... */
-package charts;
+package basic;
  
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * for categories. Used for displaying information when at least one axis has
  * discontinuous or discrete data.
  */
-public class BarChartApp extends Application {
+public class ChartAppBar extends Application {
  
     private BarChart chart;
     private CategoryAxis xAxis;
