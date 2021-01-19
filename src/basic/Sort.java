@@ -1,17 +1,16 @@
 package basic;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class Sort {
 
-    //public clas
+    //public class
     public static void main(String[] args) throws IOException {
         String[][] strDataArray = Data.getData();
-        String[][] strSortedDataArray = sortByCatagory(strDataArray, 6, "Cars");
+        String[][] strSortedDataArray = selection_sort(strDataArray, 4);
 
         for (int check = 0; check < strSortedDataArray.length; check++) {
-            System.out.println(strSortedDataArray[check][6]);
+            System.out.println(strSortedDataArray[check][4]);
         }
     }
 
@@ -46,32 +45,4 @@ public class Sort {
       return strArray;
   }
 
-  // Caragory sort for bubble chart
-  private static String[][] sortByCatagory(String[][] strArray, int indexValue, String catagoryName) {
-    int intNumbOfItemsInCatagory = 0;
-
-    for(int k = 0; k < strArray.length; k++) {
-        if (catagoryName.equals(strArray[k][indexValue])) {
-            intNumbOfItemsInCatagory += 1;
-        }
-    }
-    
-    int intNewIndexCounter = -1;
-    String[][] finalArray = new String[intNumbOfItemsInCatagory][strArray[1].length];
-    String strElement;
-
-       for(int i = 0; i < strArray.length; i++) {
-            strElement = strArray[i][indexValue];
-            if(strElement.equals(catagoryName)) {
-                intNewIndexCounter += 1;
-                finalArray = new String[intNewIndexCounter][strArray[1].length];
-                for(int j = 0; j < strArray[1].length; j++) {
-                    finalArray[intNewIndexCounter][j] = strArray[i][j];
-                }
-            }
-        }
-
-    return finalArray;
-  }
-    
 }

@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
- 
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
@@ -23,18 +23,18 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Japan Company Dataset");
-        
+
         // Creating a grid
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.TOP_LEFT);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-        
+
         // Adding a title to the page
         Text scenetitle = new Text("Japan's Largest Companies");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.BOLD, 45));
@@ -47,12 +47,18 @@ public class Main extends Application {
         bblbBtn.getChildren().add(bubbleButton);
         grid.add(bblbBtn, 1, 25);
         bubbleButton.setOnAction(new EventHandler<ActionEvent>() {
- 
+
             @Override
             public void handle(ActionEvent event) {
-                ChartAppBubble bubbleChart  = new ChartAppBubble();
-                Scene BubbleChartScene = bubbleChart.getScene();
-                primaryStage.setScene(BubbleChartScene);
+                ChartAppBubble bubbleChart = new ChartAppBubble();
+                Scene BubbleChartScene;
+                try {
+                    BubbleChartScene = bubbleChart.getScene();
+                    primaryStage.setScene(BubbleChartScene);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
