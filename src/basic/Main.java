@@ -24,6 +24,8 @@ public class Main extends Application {
         launch(args);
     }
 
+
+    public static Scene mianScene;
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Japan Company Dataset");
@@ -101,6 +103,12 @@ public class Main extends Application {
         Scene mianScene = new Scene(grid, 800, 500);
         primaryStage.setScene(mianScene);
         primaryStage.show();
+    }
+
+     
+    // Sending the scene to the main javafx file
+    public Scene getScene() {
+        return mianScene;
     }
 
 }

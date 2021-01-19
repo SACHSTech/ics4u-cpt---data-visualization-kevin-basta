@@ -8,7 +8,20 @@ import javafx.scene.chart.BubbleChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
- 
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
  
 /**
  * An advanced bubble chart with a variety of actions and settable properties.
@@ -21,6 +34,26 @@ public class ChartAppBubble extends Application {
  
     public Parent createContent() throws IOException {
         chart = createChart();
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.TOP_LEFT);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+
+        // Adding a button that links to the home gui
+        Button HomeButton = new Button("Go Back");
+        HBox HomeBtn = new HBox(100);
+        HomeBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        HomeBtn.getChildren().add(HomeButton);
+        grid.add(HomeBtn, 5, 25);
+        HomeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Main mainClass  = new Main();
+                Scene mainScene = mainClass.getScene();
+                //primaryStage.setScene(mainScene);
+            }
+        });
         return chart;
     }
  
@@ -32,9 +65,9 @@ public class ChartAppBubble extends Application {
         final String bubbleChartCss =
             getClass().getResource("ChartAppBubbleStyle.css").toExternalForm();
         bc.getStylesheets().add(bubbleChartCss);
-        bc.setTitle("GlobalRank vs. Profits BubbleChart");
-        xAxis.setLabel("X Axis");
-        yAxis.setLabel("Y Axis");
+        bc.setTitle("Profits vs. Market Value BubbleChart");
+        xAxis.setLabel("Market Value ($billion)");
+        yAxis.setLabel("Profits ($billion)");
 
         // add starting data
         String carsArray[][] = Search.getCatagoryArray(6, "Cars");
@@ -212,6 +245,7 @@ public class ChartAppBubble extends Application {
         }
 
         bc.getData().addAll(Cars, Banks, Utilitys, Conglomerates, Trades, Technologies, Foods, Transports, Retails, Pharmacies, Manufactures, RealEstates, Insurances, Entertainments, Constructions, Medias, Conveniences);
+        
         return bc;
     }
  
