@@ -60,6 +60,11 @@ public class ChartAppBubble extends Application {
         primaryStage.setScene(new Scene(createContent()));
         primaryStage.show();
     }
+
+    // Sending the scene to the main javafx file
+    public Scene getScene() {
+        return new Scene(createContent(), 800, 500);
+    }
  
     /**
      * Java main for when running without JavaFX launcher

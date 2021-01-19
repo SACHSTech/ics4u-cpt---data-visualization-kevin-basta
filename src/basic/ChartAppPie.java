@@ -37,6 +37,11 @@ public class ChartAppPie extends Application {
         primaryStage.show();
     }
  
+    // Sending the scene to the main javafx file
+    public Scene getScene() {
+        return new Scene(createContent(), 800, 500);
+    }
+
     /**
      * Java main for when running without JavaFX launcher
      */
