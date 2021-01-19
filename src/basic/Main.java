@@ -25,7 +25,7 @@ public class Main extends Application {
     }
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Japan Company Dataset");
         
         // Creating a grid
@@ -36,16 +36,16 @@ public class Main extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
         
         // Adding a title to the page
-        Text scenetitle = new Text("Largest Companies Dataset");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        Text scenetitle = new Text("Japan's Largest Companies");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.BOLD, 45));
+        grid.add(scenetitle, 0, 5, 15, 15);
 
         // Adding a button that links to the bubble chart gui
-        Button bubbleButton = new Button("See BUBBLE Graph");
+        Button bubbleButton = new Button("See Bubble Graph");
         HBox bblbBtn = new HBox(10);
         bblbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         bblbBtn.getChildren().add(bubbleButton);
-        grid.add(bblbBtn, 1, 4);
+        grid.add(bblbBtn, 1, 25);
         bubbleButton.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
@@ -57,11 +57,11 @@ public class Main extends Application {
         });
 
         // Adding a button that links to the Bar chart gui
-        Button barButton = new Button("See BAR Graph");
+        Button barButton = new Button("See Bar Graph");
         HBox barBtn = new HBox(10);
         barBtn.setAlignment(Pos.BOTTOM_RIGHT);
         barBtn.getChildren().add(barButton);
-        grid.add(barBtn, 2, 8);
+        grid.add(barBtn, 5, 25);
         barButton.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
@@ -73,11 +73,11 @@ public class Main extends Application {
         });
 
         // Adding a button that links to the PIE chart gui
-        Button pieButton = new Button("See PIE Graph");
+        Button pieButton = new Button("See Pie Graph");
         HBox pieBtn = new HBox(10);
         pieBtn.setAlignment(Pos.BOTTOM_RIGHT);
         pieBtn.getChildren().add(pieButton);
-        grid.add(pieBtn, 4, 18);
+        grid.add(pieBtn, 9, 25);
         pieButton.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
@@ -88,8 +88,8 @@ public class Main extends Application {
             }
         });
 
-        //String[][] testArray = loadData.getData();
-        //System.out.println(testArray[248][1]);
+        String[][] testArray = Data.getData();
+        System.out.println(testArray[2][0]);
 
         // The Main Page Scene
         Scene mianScene = new Scene(grid, 800, 500);

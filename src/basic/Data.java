@@ -2,18 +2,18 @@ package basic;
 
 import java.io.*;
 
-public class loadData {
+public class Data {
     
-    static String[][] data;
+    private static String[][] dataArray;
 
-    public static void main(String[] args) throws IOException {
+    private static void loadArray() throws IOException {
         // intGlobalRank strCompanyName intCompanySales intCompanyProfits intCompanyAssets intCompanyMarketValue strTypeOfCompany strCompanyDescription
         BufferedReader japanLargestCompanies = new BufferedReader(new FileReader("src/basic/Japan_largest_companies_edited.csv"));
         int intCounter1 = 0;
         int intCounter2 = 0;
         
         String[] dataReader;
-        data = new String[248][8];
+        dataArray = new String[248][8];
         String strCSVLineReader = "";
 
         while((strCSVLineReader = japanLargestCompanies.readLine()) != null) {
@@ -21,21 +21,26 @@ public class loadData {
             dataReader = strCSVLineReader.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
             
             // Switching the order of the global rank and name
-            data[intCounter1][0] = dataReader[1];
-            data[intCounter1][1] = dataReader[0];
+            dataArray[intCounter1][0] = dataReader[1];
+            dataArray[intCounter1][1] = dataReader[0];
 
             // Populating rest of the data array
             for (intCounter2 = 2; intCounter2 <= 7; intCounter2++) {
-                data[intCounter1][intCounter2] = dataReader[intCounter2];
+                dataArray[intCounter1][intCounter2] = dataReader[intCounter2];
             }
             intCounter1 += 1;
         }
 
         japanLargestCompanies.close();
+        //System.out.println(dataArray[247][0]);
     }
 
-    public static String[][] getData() {
-        return data;
+
+    // To fetch from other classes use String[][] testArray = Data.getData();
+    public static String[][] getData() throws IOException {
+        loadArray();
+        //System.out.println(dataArray[1].length);
+        return dataArray;
     }
 
 
