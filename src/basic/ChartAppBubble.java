@@ -48,6 +48,7 @@ public class ChartAppBubble extends Application {
     public Parent createContent() throws IOException {
         chart = createChart();
         
+        // SETTING UP BUTTONS
         StackPane spLineChart = new StackPane();
         spLineChart.getChildren().add(chart);
 
@@ -61,7 +62,7 @@ public class ChartAppBubble extends Application {
         spButton.getChildren().add(button);
 
         VBox vbox = new VBox();
-        VBox.setVgrow(spLineChart, Priority.ALWAYS);//Make line chart always grow vertically
+        VBox.setVgrow(spLineChart, Priority.ALWAYS);
         vbox.getChildren().addAll(spLineChart, spButton);
 
         return vbox;

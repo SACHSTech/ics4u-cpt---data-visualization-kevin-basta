@@ -1,5 +1,8 @@
 package basic;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Company {
     
     private String strCompanyName;
@@ -58,5 +61,37 @@ public class Company {
         return this.dblCompanyMarketValue;
     }
 
+    // Getter methods for each parameter a company has for cell view
+    public StringProperty getCompanyNameProperty() {
+        return new SimpleStringProperty(this.strCompanyName);
+    }
+
+    public StringProperty getCompanyTypeProperty() { 
+        return new SimpleStringProperty(this.strTypeOfCompany);
+    }
+
+    public StringProperty getCompanyDescriptionProperty() {
+        return new SimpleStringProperty(this.strCompanyDescription);
+    }
+
+    public StringProperty getCompanyRankProperty() {
+        return new SimpleStringProperty(String.valueOf(this.intGlobalRank));
+    }
+
+    public StringProperty getCompanySalesProperty() {
+        return new SimpleStringProperty(String.valueOf(this.dblCompanySales));
+    }
+
+    public StringProperty getCompanyProfitProperty() {
+        return new SimpleStringProperty(String.valueOf(this.dblCompanyProfits));
+    }
+
+    public StringProperty getCompanyAssetsProperty() {
+        return new SimpleStringProperty(String.valueOf(this.dblCompanyAssets));
+    }
+
+    public StringProperty getCompanyMarketValueProperty() {
+        return new SimpleStringProperty(String.valueOf(this.dblCompanyMarketValue));
+    }
 
 }

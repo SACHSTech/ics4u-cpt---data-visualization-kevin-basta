@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 public class Main extends Application {
     // Main method that launches the Javafx gui
     public static void main(String[] args) throws IOException {
-        CompanyList.loadCompanyObjects();
+        CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
         launch(args);
     }
 
@@ -89,21 +89,37 @@ public class Main extends Application {
 
         // Adding a button that links to the PIE chart gui
         /*
-        Button pieButton = new Button("See Pie Graph");
-        HBox pieBtn = new HBox(10);
-        pieBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        pieBtn.getChildren().add(pieButton);
-        grid.add(pieBtn, 9, 25);
-        pieButton.setOnAction(new EventHandler<ActionEvent>() {
- 
+         * Button pieButton = new Button("See Pie Graph"); HBox pieBtn = new HBox(10);
+         * pieBtn.setAlignment(Pos.BOTTOM_RIGHT); pieBtn.getChildren().add(pieButton);
+         * grid.add(pieBtn, 9, 25); pieButton.setOnAction(new
+         * EventHandler<ActionEvent>() {
+         * 
+         * @Override public void handle(ActionEvent event) { ChartAppPie pieChart = new
+         * ChartAppPie(); Scene PieChartScene = pieChart.getScene(primaryStage);
+         * primaryStage.setScene(PieChartScene); } });
+         */
+
+        Button tableView = new Button("See Pie Graph");
+        HBox tblBtn = new HBox(10);
+        tblBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        tblBtn.getChildren().add(tableView);
+        grid.add(tblBtn, 9, 25);
+        tableView.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent event) {
-                ChartAppPie pieChart  = new ChartAppPie();
-                Scene PieChartScene = pieChart.getScene();
-                primaryStage.setScene(PieChartScene);
+                TableAppView tableApp = new TableAppView();
+                Scene tableAppScene;
+                try {
+                    tableAppScene = tableApp.getScene(primaryStage);
+                    primaryStage.setScene(tableAppScene);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
-        */
+        
 
         // The Main Page Scene
         mianScene = new Scene(grid, 800, 500);

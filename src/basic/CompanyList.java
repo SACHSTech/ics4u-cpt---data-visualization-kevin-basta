@@ -8,8 +8,9 @@ public class CompanyList {
     // Arrary List of all the companies
     private static ArrayList<Company> companyList = new ArrayList<Company>();
 
+    /*
     public static void main(String[] args) throws IOException{
-        loadCompanyObjects();
+        Companylist Japan = new CompanyList("Japan_largest_companies_edited.csv");
         //System.out.println(companyList.get(246).getCompanyName());
 
         ArrayList<Company> strSortedDataArray = selectionSort(0);
@@ -17,12 +18,12 @@ public class CompanyList {
             System.out.println(strSortedDataArray.get(check).getCompanyProfit());
         }
     }
-    
+    */
     
 
     // Populates the arraylist from the csv
-    public static void loadCompanyObjects() throws IOException {
-        BufferedReader japanLargestCompanies = new BufferedReader(new FileReader("src/basic/Japan_largest_companies_edited.csv"));
+    public CompanyList(String fileToRead) throws IOException {
+        BufferedReader japanLargestCompanies = new BufferedReader(new FileReader("src/basic/" + fileToRead));
         String strCSVLineReader = "";
         String[] dataReader;
         
@@ -39,6 +40,9 @@ public class CompanyList {
         japanLargestCompanies.close();
     }
     
+    public static ArrayList<Company> getArrayList() {
+        return companyList;
+    }
 
 
     // Caragory search for bubble chart
@@ -59,7 +63,7 @@ public class CompanyList {
 
 
     // selection sort [currently set to getCompanyProfit]
-    private static ArrayList<Company> selectionSort(int intArrayIndexValue) throws IOException{
+    public static ArrayList<Company> selectionSort(int intArrayIndexValue) throws IOException{
         ArrayList<Company> newSortedCompanyList = companyList;
         int currentMinIndex;
       
