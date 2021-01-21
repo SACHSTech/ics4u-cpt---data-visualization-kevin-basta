@@ -1,6 +1,7 @@
 package basic;
 
 import java.io.*;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -70,177 +71,173 @@ public class ChartAppBubble extends Application {
         yAxis.setLabel("Profits ($billion)");
 
         // add starting data
-        String carsArray[][] = Search.getCatagoryArray(6, "Cars");
+        ArrayList<Company> carsArray = CompanyList.sortByCatagory(6, "Cars");
         XYChart.Series<Number, Number> Cars = new XYChart.Series<>();
         Cars.setName("Cars");
-        for (int i = 0; i < carsArray.length; i++) {
+        for (int i = 0; i < carsArray.size(); i++) {
             Cars.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(carsArray[i][5]), // x values
-                Double.parseDouble(carsArray[i][3]), // y values
+                carsArray.get(i).getCompanyMarketValue(), // x values
+                carsArray.get(i).getCompanyProfit(),// y values
                 1)); // how big the circle is
         }
 
-        String bankArray[][] = Search.getCatagoryArray(6, "Bank");
+        ArrayList<Company> bankArray = CompanyList.sortByCatagory(6, "Bank");
         XYChart.Series<Number, Number> Banks = new XYChart.Series<>();
         Banks.setName("Banks");
-        for (int i = 0; i < bankArray.length; i++) {
+        for (int i = 0; i < bankArray.size(); i++) {
             Banks.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(bankArray[i][5]), // x values
-                Double.parseDouble(bankArray[i][3]), // y values
+                bankArray.get(i).getCompanyMarketValue(), // x values
+                bankArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        
-        String utilityArray[][] = Search.getCatagoryArray(6, "Utility");
+        ArrayList<Company> utilityArray = CompanyList.sortByCatagory(6, "Utility");
         XYChart.Series<Number, Number> Utilitys = new XYChart.Series<>();
         Utilitys.setName("Utilities");
-        for (int i = 0; i < utilityArray.length; i++) {
+        for (int i = 0; i < utilityArray.size(); i++) {
             Utilitys.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(utilityArray[i][5]), // x values
-                Double.parseDouble(utilityArray[i][3]), // y values
+                utilityArray.get(i).getCompanyMarketValue(), // x values
+                utilityArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        
-        String conglomerateArray[][] = Search.getCatagoryArray(6, "Conglomerate");
+        ArrayList<Company> conglomerateArray = CompanyList.sortByCatagory(6, "Conglomerate");        
         XYChart.Series<Number, Number> Conglomerates = new XYChart.Series<>();
         Conglomerates.setName("Conglomerate");
-        for (int i = 0; i < conglomerateArray.length; i++) {
+        for (int i = 0; i < conglomerateArray.size(); i++) {
             Conglomerates.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(conglomerateArray[i][5]), // x values
-                Double.parseDouble(conglomerateArray[i][3]), // y values
+                conglomerateArray.get(i).getCompanyMarketValue(), // x values
+                conglomerateArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-
-        String tradeArray[][] = Search.getCatagoryArray(6, "Trade");
+        ArrayList<Company> tradeArray = CompanyList.sortByCatagory(6, "Trade");
         XYChart.Series<Number, Number> Trades = new XYChart.Series<>();
         Trades.setName("Trade");
-        for (int i = 0; i < tradeArray.length; i++) {
+        for (int i = 0; i < tradeArray.size(); i++) {
             Trades.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(tradeArray[i][5]), // x values
-                Double.parseDouble(tradeArray[i][3]), // y values
+                tradeArray.get(i).getCompanyMarketValue(), // x values
+                tradeArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String technologyArray[][] = Search.getCatagoryArray(6, "Technology");
+        ArrayList<Company> technologyArray = CompanyList.sortByCatagory(6, "Technology");
         XYChart.Series<Number, Number> Technologies = new XYChart.Series<>();
         Technologies.setName("Technology");
-        for (int i = 0; i < technologyArray.length; i++) {
+        for (int i = 0; i < technologyArray.size(); i++) {
             Technologies.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(technologyArray[i][5]), // x values
-                Double.parseDouble(technologyArray[i][3]), // y values
+                technologyArray.get(i).getCompanyMarketValue(), // x values
+                technologyArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String foodAndDrinkArray[][] = Search.getCatagoryArray(6, "Food and drink");
+        ArrayList<Company> foodAndDrinkArray = CompanyList.sortByCatagory(6, "Food and drink");
         XYChart.Series<Number, Number> Foods = new XYChart.Series<>();
         Foods.setName("Food and drink");
-        for (int i = 0; i < foodAndDrinkArray.length; i++) {
+        for (int i = 0; i < foodAndDrinkArray.size(); i++) {
             Foods.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(foodAndDrinkArray[i][5]), // x values
-                Double.parseDouble(foodAndDrinkArray[i][3]), // y values
+                foodAndDrinkArray.get(i).getCompanyMarketValue(), // x values
+                foodAndDrinkArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String transportArray[][] = Search.getCatagoryArray(6, "Transport");
+        ArrayList<Company> transportArray = CompanyList.sortByCatagory(6, "Transport");
         XYChart.Series<Number, Number> Transports = new XYChart.Series<>();
         Transports.setName("Transport");
-        for (int i = 0; i < transportArray.length; i++) {
+        for (int i = 0; i < transportArray.size(); i++) {
             Transports.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(transportArray[i][5]), // x values
-                Double.parseDouble(transportArray[i][3]), // y values
+                transportArray.get(i).getCompanyMarketValue(), // x values
+                transportArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String retailArray[][] = Search.getCatagoryArray(6, "Retail");
+        ArrayList<Company> retailArray = CompanyList.sortByCatagory(6, "Retail");
         XYChart.Series<Number, Number> Retails = new XYChart.Series<>();
         Retails.setName("Retail");
-        for (int i = 0; i < retailArray.length; i++) {
+        for (int i = 0; i < retailArray.size(); i++) {
             Retails.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(retailArray[i][5]), // x values
-                Double.parseDouble(retailArray[i][3]), // y values
+                retailArray.get(i).getCompanyMarketValue(), // x values
+                retailArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String pharmacyArray[][] = Search.getCatagoryArray(6, "Pharmacy");
+        ArrayList<Company> pharmacyArray = CompanyList.sortByCatagory(6, "Pharmacy");
         XYChart.Series<Number, Number> Pharmacies = new XYChart.Series<>();
         Pharmacies.setName("Pharmacy");
-        for (int i = 0; i < pharmacyArray.length; i++) {
+        for (int i = 0; i < pharmacyArray.size(); i++) {
             Pharmacies.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(pharmacyArray[i][5]), // x values
-                Double.parseDouble(pharmacyArray[i][3]), // y values
+                pharmacyArray.get(i).getCompanyMarketValue(), // x values
+                pharmacyArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String manufactureArray[][] = Search.getCatagoryArray(6, "Manufacture");
+        ArrayList<Company> manufactureArray = CompanyList.sortByCatagory(6, "Manufacture");
         XYChart.Series<Number, Number> Manufactures = new XYChart.Series<>();
         Manufactures.setName("Manufacture");
-        for (int i = 0; i < manufactureArray.length; i++) {
+        for (int i = 0; i < manufactureArray.size(); i++) {
             Manufactures.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(manufactureArray[i][5]), // x values
-                Double.parseDouble(manufactureArray[i][3]), // y values
+                manufactureArray.get(i).getCompanyMarketValue(), // x values
+                manufactureArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String realEstatesArray[][] = Search.getCatagoryArray(6, "Real Estate");
+        ArrayList<Company> realEstatesArray = CompanyList.sortByCatagory(6, "Real Estate");
         XYChart.Series<Number, Number> RealEstates = new XYChart.Series<>();
         RealEstates.setName("Real Estate");
-        for (int i = 0; i < realEstatesArray.length; i++) {
+        for (int i = 0; i < realEstatesArray.size(); i++) {
             RealEstates.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(realEstatesArray[i][5]), // x values
-                Double.parseDouble(realEstatesArray[i][3]), // y values
+                realEstatesArray.get(i).getCompanyMarketValue(), // x values
+                realEstatesArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String InsuranceArray[][] = Search.getCatagoryArray(6, "Insurance");
+        ArrayList<Company> InsuranceArray = CompanyList.sortByCatagory(6, "Insurance");
         XYChart.Series<Number, Number> Insurances = new XYChart.Series<>();
         Insurances.setName("Insurance");
-        for (int i = 0; i < InsuranceArray.length; i++) {
+        for (int i = 0; i < InsuranceArray.size(); i++) {
             Insurances.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(InsuranceArray[i][5]), // x values
-                Double.parseDouble(InsuranceArray[i][3]), // y values
+                InsuranceArray.get(i).getCompanyMarketValue(), // x values
+                InsuranceArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String entertainmentArray[][] = Search.getCatagoryArray(6, "Entertainment");
+        ArrayList<Company> entertainmentArray = CompanyList.sortByCatagory(6, "Entertainment");
         XYChart.Series<Number, Number> Entertainments = new XYChart.Series<>();
         Entertainments.setName("Entertainment");
-        for (int i = 0; i < entertainmentArray.length; i++) {
+        for (int i = 0; i < entertainmentArray.size(); i++) {
             Entertainments.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(entertainmentArray[i][5]), // x values
-                Double.parseDouble(entertainmentArray[i][3]), // y values
+                entertainmentArray.get(i).getCompanyMarketValue(), // x values
+                entertainmentArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String constructionArray[][] = Search.getCatagoryArray(6, "Construction");
+        ArrayList<Company> constructionArray = CompanyList.sortByCatagory(6, "Construction");
         XYChart.Series<Number, Number> Constructions = new XYChart.Series<>();
         Constructions.setName("Construction");
-        for (int i = 0; i < constructionArray.length; i++) {
+        for (int i = 0; i < constructionArray.size(); i++) {
             Constructions.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(constructionArray[i][5]), // x values
-                Double.parseDouble(constructionArray[i][3]), // y values
+                constructionArray.get(i).getCompanyMarketValue(), // x values
+                constructionArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-
-        String mediaArray[][] = Search.getCatagoryArray(6, "Media");
+        ArrayList<Company> mediaArray = CompanyList.sortByCatagory(6, "Media");
         XYChart.Series<Number, Number> Medias = new XYChart.Series<>();
         Medias.setName("Media");
-        for (int i = 0; i < mediaArray.length; i++) {
+        for (int i = 0; i < mediaArray.size(); i++) {
             Medias.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(mediaArray[i][5]), // x values
-                Double.parseDouble(mediaArray[i][3]), // y values
+                mediaArray.get(i).getCompanyMarketValue(), // x values
+                mediaArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 
-        String convenienceArray[][] = Search.getCatagoryArray(6, "Convenience");
+        ArrayList<Company> convenienceArray = CompanyList.sortByCatagory(6, "Convenience");
         XYChart.Series<Number, Number> Conveniences = new XYChart.Series<>();
         Conveniences.setName("Convenience");
-        for (int i = 0; i < convenienceArray.length; i++) {
+        for (int i = 0; i < convenienceArray.size(); i++) {
             Conveniences.getData().add(new XYChart.Data<Number, Number>(
-                Double.parseDouble(convenienceArray[i][5]), // x values
-                Double.parseDouble(convenienceArray[i][3]), // y values
+                convenienceArray.get(i).getCompanyMarketValue(), // x values
+                convenienceArray.get(i).getCompanyProfit(), // y values
                 1)); // how big the circle is
         }
 

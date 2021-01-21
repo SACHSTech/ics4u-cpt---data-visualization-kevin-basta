@@ -6,21 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+//import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
+//import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class Main extends Application {
     // Main method that launches the Javafx gui
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        CompanyList.loadCompanyObjects();
         launch(args);
     }
 
@@ -95,9 +96,6 @@ public class Main extends Application {
                 primaryStage.setScene(PieChartScene);
             }
         });
-
-        String[][] testArray = Data.getData();
-        System.out.println(testArray[2][0]);
 
         // The Main Page Scene
         Scene mianScene = new Scene(grid, 800, 500);
