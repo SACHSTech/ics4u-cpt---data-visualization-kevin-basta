@@ -24,6 +24,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
  
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 /**
  * An advanced bubble chart with a variety of actions and settable properties.
  */
@@ -32,36 +43,40 @@ public class ChartAppBubble extends Application {
     private BubbleChart<Number, Number> chart;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
- 
+    private Stage importedStage;
+    
     public Parent createContent() throws IOException {
         chart = createChart();
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.TOP_LEFT);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        
+        StackPane spLineChart = new StackPane();
+        spLineChart.getChildren().add(chart);
 
-        // Adding a button that links to the home gui
-        Button HomeButton = new Button("Go Back");
-        HBox HomeBtn = new HBox(100);
-        HomeBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        HomeBtn.getChildren().add(HomeButton);
-        grid.add(HomeBtn, 5, 25);
-        HomeButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Main mainClass  = new Main();
-                Scene mainScene = mainClass.getScene();
-                //primaryStage.setScene(mainScene);
-            }
+        /*
+        Stage mainStage = Main.getStage();
+        Scene mainScene = Main.getScene();
+        */
+
+        Button button = new Button("<< Go Back");
+        button.setOnMouseClicked((event)->{
+            
+            Main.setOwnStage(importedStage);
+            System.out.println("You just clicked me");
         });
-        return chart;
+        StackPane spButton = new StackPane();
+        spButton.getChildren().add(button);
+
+        VBox vbox = new VBox();
+        VBox.setVgrow(spLineChart, Priority.ALWAYS);//Make line chart always grow vertically
+        vbox.getChildren().addAll(spLineChart, spButton);
+
+        return vbox;
     }
  
     private BubbleChart<Number, Number> createChart() throws IOException {
         xAxis = new NumberAxis();
         yAxis = new NumberAxis();
         final BubbleChart<Number, Number> bc = new BubbleChart<>(xAxis, yAxis);
+        
         // setup chart
         final String bubbleChartCss =
             getClass().getResource("ChartAppBubbleStyle.css").toExternalForm();
@@ -253,7 +268,8 @@ public class ChartAppBubble extends Application {
     }
 
     // Sending the scene to the main javafx file
-    public Scene getScene() throws IOException {
+    public Scene getScene(Stage theStage) throws IOException {
+        importedStage = theStage;
         return new Scene(createContent(), 800, 500);
     }
  

@@ -18,6 +18,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 public class Main extends Application {
     // Main method that launches the Javafx gui
     public static void main(String[] args) throws IOException {
@@ -27,6 +35,7 @@ public class Main extends Application {
 
 
     public static Scene mianScene;
+    public static Stage primaryStage;
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Japan Company Dataset");
@@ -56,7 +65,7 @@ public class Main extends Application {
                 ChartAppBubble bubbleChart = new ChartAppBubble();
                 Scene BubbleChartScene;
                 try {
-                    BubbleChartScene = bubbleChart.getScene();
+                    BubbleChartScene = bubbleChart.getScene(primaryStage);
                     primaryStage.setScene(BubbleChartScene);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -98,15 +107,14 @@ public class Main extends Application {
         });
 
         // The Main Page Scene
-        Scene mianScene = new Scene(grid, 800, 500);
+        mianScene = new Scene(grid, 800, 500);
         primaryStage.setScene(mianScene);
         primaryStage.show();
     }
 
-     
-    // Sending the scene to the main javafx file
-    public Scene getScene() {
-        return mianScene;
+    // Setting the Scene back to main scene
+    public static void setOwnStage(Stage primaryStageImport) {
+        primaryStageImport.setScene(mianScene);
     }
 
 }
