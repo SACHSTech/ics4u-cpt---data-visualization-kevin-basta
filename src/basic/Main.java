@@ -18,14 +18,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
 public class Main extends Application {
     // Main method that launches the Javafx gui
     public static void main(String[] args) throws IOException {
@@ -33,9 +25,8 @@ public class Main extends Application {
         launch(args);
     }
 
-
     public static Scene mianScene;
-    public static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Japan Company Dataset");
@@ -81,16 +72,23 @@ public class Main extends Application {
         barBtn.getChildren().add(barButton);
         grid.add(barBtn, 5, 25);
         barButton.setOnAction(new EventHandler<ActionEvent>() {
- 
+
             @Override
             public void handle(ActionEvent event) {
-                ChartAppBar barChart  = new ChartAppBar();
-                Scene BarChartScene = barChart.getScene();
-                primaryStage.setScene(BarChartScene);
+                ChartAppBar barChart = new ChartAppBar();
+                Scene BarChartScene;
+                try {
+                    BarChartScene = barChart.getScene(primaryStage);
+                    primaryStage.setScene(BarChartScene);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
         // Adding a button that links to the PIE chart gui
+        /*
         Button pieButton = new Button("See Pie Graph");
         HBox pieBtn = new HBox(10);
         pieBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -105,6 +103,7 @@ public class Main extends Application {
                 primaryStage.setScene(PieChartScene);
             }
         });
+        */
 
         // The Main Page Scene
         mianScene = new Scene(grid, 800, 500);

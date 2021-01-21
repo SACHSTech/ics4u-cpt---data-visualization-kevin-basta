@@ -1,6 +1,8 @@
 /* ....Show License.... */
 package basic;
- 
+
+import java.io.*;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +13,16 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.stage.Stage;
  
- 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 /**
  * A chart that displays rectangular bars with heights indicating data values
  * for categories. Used for displaying information when at least one axis has
@@ -22,6 +33,7 @@ public class ChartAppBar extends Application {
     private BarChart chart;
     private CategoryAxis xAxis;
     private NumberAxis yAxis;
+    private Stage importedStage;
  
     public Parent createContent() {
         String[] years = {"2007", "2008", "2009"};
@@ -44,7 +56,24 @@ public class ChartAppBar extends Application {
                 new BarChart.Data(years[2], 2774)))
             );
         chart = new BarChart(xAxis, yAxis, barChartData, 25.0d);
-        return chart;
+        
+        StackPane spLineChart = new StackPane();
+        spLineChart.getChildren().add(chart);
+
+        Button button = new Button("<< Go Back");
+        button.setOnMouseClicked((event)->{
+            
+            Main.setOwnStage(importedStage);
+            //System.out.println("You just clicked me");
+        });
+        StackPane spButton = new StackPane();
+        spButton.getChildren().add(button);
+
+        VBox vbox = new VBox();
+        VBox.setVgrow(spLineChart, Priority.ALWAYS);//Make line chart always grow vertically
+        vbox.getChildren().addAll(spLineChart, spButton);
+
+        return vbox;
     }
  
     @Override public void start(Stage primaryStage) throws Exception {
@@ -53,9 +82,10 @@ public class ChartAppBar extends Application {
     }
  
     // Sending the scene to the main javafx file
-    public Scene getScene() {
+    public Scene getScene(Stage theStage) throws IOException {
+      importedStage = theStage;
       return new Scene(createContent(), 800, 500);
-    }
+  }
     
     /**
      * Java main for when running without JavaFX launcher

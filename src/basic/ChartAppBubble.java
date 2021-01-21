@@ -51,16 +51,11 @@ public class ChartAppBubble extends Application {
         StackPane spLineChart = new StackPane();
         spLineChart.getChildren().add(chart);
 
-        /*
-        Stage mainStage = Main.getStage();
-        Scene mainScene = Main.getScene();
-        */
-
         Button button = new Button("<< Go Back");
         button.setOnMouseClicked((event)->{
             
             Main.setOwnStage(importedStage);
-            System.out.println("You just clicked me");
+            //System.out.println("You just clicked me");
         });
         StackPane spButton = new StackPane();
         spButton.getChildren().add(button);
