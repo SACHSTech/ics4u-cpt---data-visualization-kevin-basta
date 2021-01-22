@@ -61,6 +61,37 @@ public class Company {
         return this.dblCompanyMarketValue;
     }
 
+    // Getter method for the DOUBLE Search and Sort index Value 
+    public Double getCompanyDblParameter(int intIndex) {
+        if (intIndex == 0) {
+            return Double.parseDouble(String.valueOf(this.intGlobalRank));
+        } else if (intIndex == 2) {
+            return this.dblCompanySales;
+        } else if (intIndex == 3) {
+            return this.dblCompanyProfits;
+        } else if (intIndex == 4) {
+            return this.dblCompanyAssets;
+        } else if (intIndex == 5) {
+            return this.dblCompanyMarketValue;
+        } else {
+            return null;
+        }
+    }
+
+    // Getter method for the STRING Search and Sort index Value
+    public String getCompanyStrParameter(int intIndex) {
+        if (intIndex == 1) {
+            return this.strCompanyName;
+        } else if (intIndex == 6) {
+            return this.strTypeOfCompany;
+        } else if (intIndex == 7) {
+            return this.strCompanyDescription;
+        } else {
+            return null;
+        }
+    }
+    
+
     // Getter methods for each parameter a company has for cell view
     public StringProperty getCompanyNameProperty() {
         return new SimpleStringProperty(this.strCompanyName);

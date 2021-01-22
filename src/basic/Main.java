@@ -99,7 +99,7 @@ public class Main extends Application {
          * primaryStage.setScene(PieChartScene); } });
          */
 
-        Button tableView = new Button("See Pie Graph");
+        Button tableView = new Button("View Data");
         HBox tblBtn = new HBox(10);
         tblBtn.setAlignment(Pos.BOTTOM_RIGHT);
         tblBtn.getChildren().add(tableView);

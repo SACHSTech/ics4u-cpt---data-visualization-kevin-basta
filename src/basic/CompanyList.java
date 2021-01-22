@@ -10,12 +10,12 @@ public class CompanyList {
 
     /*
     public static void main(String[] args) throws IOException{
-        Companylist Japan = new CompanyList("Japan_largest_companies_edited.csv");
+        CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
         //System.out.println(companyList.get(246).getCompanyName());
 
-        ArrayList<Company> strSortedDataArray = selectionSort(0);
+        ArrayList<Company> strSortedDataArray = selectionSortDouble(5);
         for (int check = 0; check < strSortedDataArray.size(); check++) {
-            System.out.println(strSortedDataArray.get(check).getCompanyProfit());
+            System.out.println(strSortedDataArray.get(check).getCompanyMarketValue());
         }
     }
     */
@@ -62,8 +62,8 @@ public class CompanyList {
 
 
 
-    // selection sort [currently set to getCompanyProfit]
-    public static ArrayList<Company> selectionSort(int intArrayIndexValue) throws IOException{
+    // selection sort for Double variable values
+    public static ArrayList<Company> selectionSortDouble(int intArrayIndexValue) throws IOException{
         ArrayList<Company> newSortedCompanyList = companyList;
         int currentMinIndex;
       
@@ -71,7 +71,7 @@ public class CompanyList {
           currentMinIndex = i; 
 
           for (int j = i + 1; j < newSortedCompanyList.size(); j++) {
-              if(newSortedCompanyList.get(j).getCompanyProfit() <  newSortedCompanyList.get(currentMinIndex).getCompanyProfit()){
+              if(newSortedCompanyList.get(j).getCompanyDblParameter(intArrayIndexValue) <  newSortedCompanyList.get(currentMinIndex).getCompanyDblParameter(intArrayIndexValue)){
                   currentMinIndex = j;
               }
           }
