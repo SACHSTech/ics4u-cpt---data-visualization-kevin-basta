@@ -70,10 +70,19 @@ public class CompanyList {
         for (int i = 0; i < newSortedCompanyList.size(); i++) {
           currentMinIndex = i; 
 
-          for (int j = i + 1; j < newSortedCompanyList.size(); j++) {
-              if(newSortedCompanyList.get(j).getCompanyDblParameter(intArrayIndexValue) <  newSortedCompanyList.get(currentMinIndex).getCompanyDblParameter(intArrayIndexValue)){
-                  currentMinIndex = j;
-              }
+          // If it's not global rank, sort from largest to smallest
+          if (intArrayIndexValue != 0) {
+            for (int j = i + 1; j < newSortedCompanyList.size(); j++) {
+                if(newSortedCompanyList.get(j).getCompanyDblParameter(intArrayIndexValue) > newSortedCompanyList.get(currentMinIndex).getCompanyDblParameter(intArrayIndexValue)){
+                    currentMinIndex = j;
+                }
+            }
+          } else {
+            for (int j = i + 1; j < newSortedCompanyList.size(); j++) {
+                if(newSortedCompanyList.get(j).getCompanyDblParameter(intArrayIndexValue) < newSortedCompanyList.get(currentMinIndex).getCompanyDblParameter(intArrayIndexValue)){
+                    currentMinIndex = j;
+                }
+            }
           }
           
           if (i != currentMinIndex) {

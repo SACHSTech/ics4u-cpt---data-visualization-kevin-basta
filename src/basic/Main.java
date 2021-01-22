@@ -132,4 +132,8 @@ public class Main extends Application {
         primaryStageImport.setScene(mianScene);
     }
 
+    public static void setOwnScene(Stage primaryStageImport, Scene newScene) {
+        primaryStageImport.setScene(newScene);
+    }
+
 }

@@ -242,7 +242,7 @@ public class ChartAppBubble extends Application {
                 1)); // how big the circle is
         }
 
-        ArrayList<Company> convenienceArray = CompanyList.sortByCatagory(6, "Convenience");
+        ArrayList<Company> convenienceArray = CompanyList.sortByCatagory(6, "Convenience ");
         XYChart.Series<Number, Number> Conveniences = new XYChart.Series<>();
         Conveniences.setName("Convenience");
         for (int i = 0; i < convenienceArray.size(); i++) {
