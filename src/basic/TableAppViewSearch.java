@@ -236,12 +236,12 @@ public class TableAppViewSearch extends Application {
         hbox2.getChildren().addAll(sortSectionTwo, choiceBox, spInfoButton);
         hbox2.setPadding(new Insets(0, 25, 5, 25));
         hbox2.setAlignment(Pos.BASELINE_CENTER);
-       // Horizontal Wrapper #3
-       HBox hbox3 = new HBox(8);
-       hbox3.getChildren().addAll(spButton);
-       hbox3.setMargin(spButton, new Insets(0, 30, 0, 75));
-       hbox3.setPadding(new Insets(5, 5, 5, 5));
-       hbox3.setAlignment(Pos.BASELINE_RIGHT);
+        // Horizontal Wrapper #3
+        HBox hbox3 = new HBox(8);
+        hbox3.getChildren().addAll(spButton);
+        hbox3.setMargin(spButton, new Insets(0, 30, 0, 75));
+        hbox3.setPadding(new Insets(5, 5, 5, 5));
+        hbox3.setAlignment(Pos.BASELINE_RIGHT);
         
         vbox.getChildren().addAll(spLineChart, hbox, hbox2, hbox3);
         return vbox;

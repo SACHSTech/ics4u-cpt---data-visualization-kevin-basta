@@ -8,7 +8,7 @@ public class CompanyList {
     // Arrary List of all the companies
     private static ArrayList<Company> companyList = new ArrayList<Company>();
 
-    /*
+    
     public static void main(String[] args) throws IOException{
         CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
         //System.out.println(companyList.get(246).getCompanyName());
@@ -17,8 +17,13 @@ public class CompanyList {
         for (int check = 0; check < strSortedDataArray.size(); check++) {
             System.out.println(strSortedDataArray.get(check).getCompanyName());
         }
+        
+        String[] fianlDataSummary = getDataSummary();
+        for (int checktwo = 0; checktwo < fianlDataSummary.length; checktwo++) {
+            System.out.println(fianlDataSummary[checktwo]);
+        }
     }
-    */
+    
     
 
     // Populates the arraylist from the csv
@@ -124,5 +129,42 @@ public class CompanyList {
       }
   }
 
+  public static String[] getDataSummary() {
+    String[] finalSummaryData = new String[6];
+    Double dblAverageSales = 0.0;
+    Double dblAverageProfit = 0.0;
+    Double dblAverageAssets = 0.0;
+    Double dblAverageMarketValue = 0.0;
+    Double dblMaxProfit = 0.0;
+    Double dblMinprofit = 0.0;
+
+    for (int i = 0; i < companyList.size(); i++) {
+        dblAverageSales += companyList.get(i).getCompanySales();
+        dblAverageProfit += companyList.get(i).getCompanyProfit();
+        dblAverageAssets += companyList.get(i).getCompanyAssets();
+        dblAverageMarketValue += companyList.get(i).getCompanyMarketValue();
+
+        if (companyList.get(i).getCompanyProfit() > dblMaxProfit) {
+            dblMaxProfit = companyList.get(i).getCompanyProfit();
+        }
+
+        if (companyList.get(i).getCompanyProfit() < dblMinprofit) {
+            dblMinprofit = companyList.get(i).getCompanyProfit();
+        }
+    }
+    dblAverageSales = Math.round((dblAverageSales / companyList.size() + 1) * 100.0) / 100.0;
+    dblAverageProfit = Math.round((dblAverageProfit / companyList.size() + 1) * 100.0) / 100.0;
+    dblAverageAssets = Math.round((dblAverageAssets / companyList.size() + 1) * 100.0) / 100.0;
+    dblAverageMarketValue = Math.round((dblAverageMarketValue / companyList.size() + 1) * 100.0) / 100.0;
+
+    finalSummaryData[0] = String.valueOf(dblAverageSales);
+    finalSummaryData[1] = String.valueOf(dblAverageProfit);
+    finalSummaryData[2] = String.valueOf(dblAverageAssets);
+    finalSummaryData[3] = String.valueOf(dblAverageMarketValue);
+    finalSummaryData[4] = String.valueOf(dblMaxProfit);
+    finalSummaryData[5] = String.valueOf(dblMinprofit);
+    
+    return finalSummaryData;
+  }
 
 }

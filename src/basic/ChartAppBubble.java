@@ -60,9 +60,12 @@ public class ChartAppBubble extends Application {
         });
         StackPane spButton = new StackPane();
         spButton.getChildren().add(button);
-
+        spButton.setPadding(new Insets(5, 5, 5, 5));
+        spButton.setAlignment(Pos.BASELINE_RIGHT);
+         
         VBox vbox = new VBox();
         VBox.setVgrow(spLineChart, Priority.ALWAYS);
+        vbox.setMargin(spButton, new Insets(0, 30, 0, 75));
         vbox.getChildren().addAll(spLineChart, spButton);
 
         return vbox;

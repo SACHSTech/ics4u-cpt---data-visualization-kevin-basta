@@ -114,12 +114,12 @@ public class IndividualRecordView extends Application {
         hbox.setPadding(new Insets(15, 25, 25, 25));
         hbox.setAlignment(Pos.BASELINE_LEFT);
 
-        // Horizontal Wrapper #2 SMALL TTITLES
+        // Horizontal Wrapper #2 SMALL TITLES
         Text type = new Text("TYPE");
         type.setFont(Font.font("Tahoma", FontWeight.LIGHT, 10));
         Text sales = new Text("SALES (billion)");
         sales.setFont(Font.font("Tahoma", FontWeight.LIGHT, 10));
-        Text profits = new Text("PROFT (billion)");
+        Text profits = new Text("PROFIT (billion)");
         profits.setFont(Font.font("Tahoma", FontWeight.LIGHT, 10));
 
         HBox hbox2 = new HBox(8);
@@ -140,14 +140,18 @@ public class IndividualRecordView extends Application {
 
         HBox hbox3 = new HBox(8);
         hbox3.getChildren().addAll(typeValue, salesValue, profitsValue);
-        hbox3.setMargin(typeValue, new Insets(5, 100, 5, 0));
-        hbox3.setMargin(salesValue, new Insets(5, 100, 5, 0));
+        if (companyDataList.get(0).getCompanyType().length() > 7) {
+            hbox3.setMargin(typeValue, new Insets(5, 40, 5, -50));
+        } else {
+            hbox3.setMargin(typeValue, new Insets(5, 85, 5, 0));
+        }
+        hbox3.setMargin(salesValue, new Insets(5, 75, 5, 0));
         hbox3.setMargin(profitsValue, new Insets(5, 0, 5, 0));
         hbox3.setPadding(new Insets(0, 100, 50, 100));
         hbox3.setAlignment(Pos.BASELINE_CENTER);
 
 
-        // Horizontal Wrapper #5 SMALL TTITLES
+        // Horizontal Wrapper #5 SMALL TITLES
         Text globalRank = new Text("GLOBAL RANK");
         globalRank.setFont(Font.font("Tahoma", FontWeight.LIGHT, 10));
         Text assets = new Text("ASSETS (billion)");
@@ -176,7 +180,7 @@ public class IndividualRecordView extends Application {
         hbox6.setMargin(globalRankValue, new Insets(5, 100, 5, 0));
         hbox6.setMargin(assetsValue, new Insets(5, 100, 5, 0));
         hbox6.setMargin(marketValueValue, new Insets(5, 0, 5, 0));
-        hbox6.setPadding(new Insets(0, 100, 5, 120));
+        hbox6.setPadding(new Insets(0, 100, 5, 100));
         hbox6.setAlignment(Pos.BASELINE_CENTER);
 
         // Horizontal Wrapper #7 VALUES
