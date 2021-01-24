@@ -120,6 +120,26 @@ public class Main extends Application {
             }
         });
         
+        Button searchView = new Button("Search Data");
+        HBox searchBtn = new HBox(10);
+        searchBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        searchBtn.getChildren().add(searchView);
+        grid.add(searchBtn, 11, 25);
+        searchView.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                TableAppViewSearch tableAppSearch = new TableAppViewSearch();
+                Scene tableAppSearchScene;
+                try {
+                    tableAppSearchScene = tableAppSearch.getScene(primaryStage);
+                    primaryStage.setScene(tableAppSearchScene);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
 
         // The Main Page Scene
         mianScene = new Scene(grid, 800, 500);

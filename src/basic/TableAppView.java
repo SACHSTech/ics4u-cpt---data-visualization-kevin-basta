@@ -104,35 +104,43 @@ public class TableAppView extends Application {
         TableColumn globalRank = new TableColumn();
         globalRank.setText("Global Rank");
         globalRank.setCellValueFactory(new PropertyValueFactory("getCompanyRank"));
-
+        globalRank.setSortable(false);
+        
         TableColumn companyName = new TableColumn();
         companyName.setText("Company");
         companyName.setCellValueFactory(new PropertyValueFactory("getCompanyName"));
+        companyName.setSortable(false);
 
         TableColumn companySales = new TableColumn();
         companySales.setText("Sales");
         companySales.setCellValueFactory(new PropertyValueFactory("getCompanySales"));
+        companySales.setSortable(false);
 
         TableColumn companyProfits = new TableColumn();
         companyProfits.setText("Profits");
         companyProfits.setCellValueFactory(new PropertyValueFactory("getCompanyProfit"));
+        companyProfits.setSortable(false);
 
         TableColumn companyAssets = new TableColumn();
         companyAssets.setText("Assets");
         companyAssets.setCellValueFactory(new PropertyValueFactory("getCompanyAssets"));
+        companyAssets.setSortable(false);
 
         TableColumn companyMarketValue = new TableColumn();
         companyMarketValue.setText("Market Value");
         companyMarketValue.setCellValueFactory(new PropertyValueFactory("getCompanyMarketValue"));
+        companyMarketValue.setSortable(false);
 
         TableColumn companyType = new TableColumn();
         companyType.setText("Type");
         companyType.setCellValueFactory(new PropertyValueFactory("getCompanyType"));
+        companyType.setSortable(false);
 
         TableColumn companyDescription = new TableColumn();
         companyDescription.setText("Description");
         companyDescription.setMinWidth(3000);
         companyDescription.setCellValueFactory(new PropertyValueFactory("getCompanyDescription"));
+        companyDescription.setSortable(false);
 
         final TableView tableView = new TableView();
         tableView.setItems(data);

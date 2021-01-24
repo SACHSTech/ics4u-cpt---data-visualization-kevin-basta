@@ -13,9 +13,9 @@ public class CompanyList {
         CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
         //System.out.println(companyList.get(246).getCompanyName());
 
-        ArrayList<Company> strSortedDataArray = selectionSortDouble(5);
+        ArrayList<Company> strSortedDataArray = linearStringSearch("Yusen");
         for (int check = 0; check < strSortedDataArray.size(); check++) {
-            System.out.println(strSortedDataArray.get(check).getCompanyMarketValue());
+            System.out.println(strSortedDataArray.get(check).getCompanyName());
         }
     }
     */
@@ -96,7 +96,33 @@ public class CompanyList {
   }
 
 
+  public static ArrayList<Company> linearStringSearch(String strCompanyName) {
+    ArrayList<Company> newCompnayListForSearch = new ArrayList<Company>();
+    String strElement;
 
+      for(int i = 0; i < companyList.size(); i++){
+        strElement = companyList.get(i).getCompanyName(); 
+        String[] splitedString = strElement.split(" ");
+
+        if (strElement.equalsIgnoreCase(strCompanyName)) {
+            newCompnayListForSearch.add(companyList.get(i));
+        } else {
+            for (int j = 0; j < splitedString.length; j++) {
+                if (strCompanyName.equalsIgnoreCase(splitedString[j])) {
+                    newCompnayListForSearch.add(companyList.get(i));
+                }
+            }
+        }
+      }
+
+      if (newCompnayListForSearch.isEmpty()) {
+        String[] notFound = {"1", "not found", "2", "3", "4", "5", "not found", "not found"};
+        newCompnayListForSearch.add(new Company(notFound));
+        return newCompnayListForSearch;
+      } else {
+        return newCompnayListForSearch;
+      }
+  }
 
 
 }
