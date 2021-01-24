@@ -197,10 +197,13 @@ public class TableAppViewSearch extends Application {
         // View Individual Record Button
         Button btnInfo = new Button("View Info!");
         btnInfo.setOnMouseClicked((event) -> {
+            IndividualRecordView individualRecord = new IndividualRecordView();
+            Scene individualrecordScene;
             try {
-                System.out.println(choiceBox.getValue());
-                Main.setOwnScene(importedStage, new Scene(createContent(), 800, 500));
+                individualrecordScene = individualRecord.getScene(importedStage, companyDataList.get(Integer.parseInt(choiceBox.getValue())));
+                importedStage.setScene(individualrecordScene);
             } catch (IOException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
