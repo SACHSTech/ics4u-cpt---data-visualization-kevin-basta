@@ -8,7 +8,7 @@ public class CompanyList {
     // Arrary List of all the companies
     private static ArrayList<Company> companyList = new ArrayList<Company>();
 
-    
+    /*
     public static void main(String[] args) throws IOException{
         CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
         //System.out.println(companyList.get(246).getCompanyName());
@@ -23,7 +23,7 @@ public class CompanyList {
             System.out.println(fianlDataSummary[checktwo]);
         }
     }
-    
+    */
     
 
     // Populates the arraylist from the csv
@@ -152,6 +152,7 @@ public class CompanyList {
             dblMinprofit = companyList.get(i).getCompanyProfit();
         }
     }
+
     dblAverageSales = Math.round((dblAverageSales / companyList.size() + 1) * 100.0) / 100.0;
     dblAverageProfit = Math.round((dblAverageProfit / companyList.size() + 1) * 100.0) / 100.0;
     dblAverageAssets = Math.round((dblAverageAssets / companyList.size() + 1) * 100.0) / 100.0;

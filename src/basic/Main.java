@@ -198,16 +198,15 @@ public class Main extends Application {
        summaryView.setOnAction(new EventHandler<ActionEvent>() {
            @Override
            public void handle(ActionEvent event) {
-               //TableAppViewSearch tableAppSearch = new TableAppViewSearch();
-               //Scene tableAppSearchScene;
-                /*
+               DataSummary dataSummary = new DataSummary();
+               Scene dataSummaryScene;
+
                try {
-                   tableAppSearchScene = tableAppSearch.getScene(primaryStage);
-                   primaryStage.setScene(tableAppSearchScene);
+                   dataSummaryScene = dataSummary.getScene(primaryStage);
+                   primaryStage.setScene(dataSummaryScene);
                } catch (IOException e) {
                    e.printStackTrace();
                }
-               */
            }
        });
 
