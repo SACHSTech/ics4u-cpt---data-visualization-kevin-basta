@@ -61,7 +61,7 @@ public class ChartAppPie extends Application {
         }
 
         Double otherCompanyAssets = 0.0;
-        for (int j = 0; j < companyList.size(); j++) {
+        for (int j = 5; j < companyList.size(); j++) {
             otherCompanyAssets += companyList.get(j).getCompanyAssets();
         }
         PieChart.Data pieChartOtherData = new PieChart.Data("other", otherCompanyAssets);
