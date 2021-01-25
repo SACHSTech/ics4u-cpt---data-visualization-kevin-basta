@@ -49,22 +49,22 @@ import javafx.stage.Stage;
  * a proportion of the total.
  */
 public class ChartAppPie extends Application {
- 
-    private PieChart chart;
+    private static ArrayList<Company> companyList = new ArrayList<Company>();
     private Stage importedStage;
- 
-    public static ObservableList<PieChart.Data> generateData() {
-        return FXCollections.observableArrayList(
-                new PieChart.Data("Sun", 20),
-                new PieChart.Data("IBM", 12),
-                new PieChart.Data("HP", 25),
-                new PieChart.Data("Dell", 22),
-                new PieChart.Data("Apple", 30));
+    private PieChart chart;
+
+    private void generateData() {
+        chart = new PieChart();
+        for (int i = 0; i < 50; i++) {
+            PieChart.Data pieChartData= new PieChart.Data(companyList.get(i).getCompanyName(), companyList.get(i).getCompanyAssets());
+            chart.getData().add(pieChartData);
+        }
+        chart.setTitle("Top 50 Company Assets In Billions");
+        chart.setClockwise(false);
     }
  
     public Parent createContent() {
-        chart = new PieChart(generateData());
-        chart.setClockwise(false);
+        generateData();
         
         // SETTING UP BUTTONS
         StackPane spLineChart = new StackPane();
@@ -96,6 +96,7 @@ public class ChartAppPie extends Application {
  
     // Sending the scene to the main javafx file
     public Scene getScene(Stage theStage) throws IOException {
+        companyList = CompanyList.selectionSortDouble(4);
         importedStage = theStage;
         return new Scene(createContent(), 800, 500);
     }

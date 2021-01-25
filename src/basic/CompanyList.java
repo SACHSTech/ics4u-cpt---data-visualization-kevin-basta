@@ -68,7 +68,41 @@ public class CompanyList {
 
 
     // selection sort for Double variable values
-    public static ArrayList<Company> selectionSortDouble(int intArrayIndexValue) throws IOException{
+    public static ArrayList<Company> selectionSortDoubleNewArray(int intArrayIndexValue, ArrayList<Company> newArraylist) throws IOException{
+        ArrayList<Company> newSortedCompanyList = newArraylist;
+        int currentMinIndex;
+      
+        for (int i = 0; i < newSortedCompanyList.size(); i++) {
+          currentMinIndex = i; 
+
+          // If it's not global rank, sort from largest to smallest
+          if (intArrayIndexValue != 0) {
+            for (int j = i + 1; j < newSortedCompanyList.size(); j++) {
+                if(newSortedCompanyList.get(j).getCompanyDblParameter(intArrayIndexValue) > newSortedCompanyList.get(currentMinIndex).getCompanyDblParameter(intArrayIndexValue)){
+                    currentMinIndex = j;
+                }
+            }
+          } else {
+            for (int j = i + 1; j < newSortedCompanyList.size(); j++) {
+                if(newSortedCompanyList.get(j).getCompanyDblParameter(intArrayIndexValue) < newSortedCompanyList.get(currentMinIndex).getCompanyDblParameter(intArrayIndexValue)){
+                    currentMinIndex = j;
+                }
+            }
+          }
+          
+          if (i != currentMinIndex) {
+              Company tempCompany = newSortedCompanyList.get(currentMinIndex);
+              newSortedCompanyList.set(currentMinIndex, newSortedCompanyList.get(i)); 
+              newSortedCompanyList.set(i, tempCompany);
+          }
+      }
+      
+      return newSortedCompanyList;
+  }
+
+
+      // selection sort for Double variable values
+      public static ArrayList<Company> selectionSortDouble(int intArrayIndexValue) throws IOException{
         ArrayList<Company> newSortedCompanyList = companyList;
         int currentMinIndex;
       
