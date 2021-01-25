@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
 import javafx.stage.Stage;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -25,7 +26,7 @@ import javafx.scene.layout.VBox;
  */
 public class ChartAppBar extends Application {
  
-    private BarChart chart;
+    private StackedBarChart chart;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
     private Stage importedStage;
@@ -40,7 +41,7 @@ public class ChartAppBar extends Application {
         yAxis = new NumberAxis();
         yAxis.setLabel("Sales ($Billion)");
 
-        chart = new BarChart<>(namesXAxis, yAxis);
+        chart = new StackedBarChart<>(namesXAxis, yAxis);
 
         ArrayList<Company> carsArray = CompanyList.sortByCatagory(6, "Cars");
         carsArray = CompanyList.selectionSortDoubleNewArray(2, carsArray);
@@ -124,7 +125,7 @@ public class ChartAppBar extends Application {
 
         final String BarChartCss = getClass().getResource("ChartAppBubbleStyle.css").toExternalForm();
         chart.getStylesheets().add(BarChartCss);
-        chart.setTitle("Largest Select Market Values By Catagory");
+        chart.setTitle("Total Sales By Catagory");
         chart.setLegendVisible(false);
         
         // SETTING UP BUTTONS

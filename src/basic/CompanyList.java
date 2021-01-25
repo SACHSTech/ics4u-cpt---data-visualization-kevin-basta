@@ -50,7 +50,7 @@ public class CompanyList {
     }
 
 
-    // Caragory search for bubble chart
+    // Caragory search
     public static ArrayList<Company> sortByCatagory(int indexValue, String catagoryName) {
         ArrayList<Company> newCaragoryCompanyList = new ArrayList<Company>();
         String strElement;

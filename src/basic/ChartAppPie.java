@@ -55,12 +55,21 @@ public class ChartAppPie extends Application {
 
     private void generateData() {
         chart = new PieChart();
-        for (int i = 0; i < 50; i++) {
-            PieChart.Data pieChartData= new PieChart.Data(companyList.get(i).getCompanyName(), companyList.get(i).getCompanyAssets());
+        for (int i = 0; i < 5; i++) {
+            PieChart.Data pieChartData = new PieChart.Data(companyList.get(i).getCompanyName(), companyList.get(i).getCompanyAssets());
             chart.getData().add(pieChartData);
         }
-        chart.setTitle("Top 50 Company Assets In Billions");
+
+        Double otherCompanyAssets = 0.0;
+        for (int j = 0; j < companyList.size(); j++) {
+            otherCompanyAssets += companyList.get(j).getCompanyAssets();
+        }
+        PieChart.Data pieChartOtherData = new PieChart.Data("other", otherCompanyAssets);
+        chart.getData().add(pieChartOtherData);
+
+        chart.setTitle("Top 5 Company Assets In Billions");
         chart.setClockwise(false);
+        chart.setLegendVisible(false);
     }
  
     public Parent createContent() {
