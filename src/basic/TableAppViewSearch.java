@@ -30,18 +30,29 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 
+/**
+ * A table for seaching the data set and selecting which 
+ * record from the search to view
+ * @author: Kevin Basta
+ */
 public class TableAppViewSearch extends Application {
     private Stage importedStage;
-
     private ArrayList<Company> companyDataList = new ArrayList<Company>();
 
+    /**
+     * Method that creates the javafx for the table view and buttons layout
+     *
+     * @return Returns the container that the scene is made of
+     */
     public Parent createContent() throws IOException {
+        final ObservableList<Company> data = FXCollections.observableArrayList();
+
         if (companyDataList.isEmpty()) {
             String[] newComapnyData = {"1", "Example Company", "1", "2", "3", "4", "Example Type", "Description Of Company"};
             companyDataList.add(new Company(newComapnyData));
         }
-        final ObservableList<Company> data = FXCollections.observableArrayList();
 
+        // Making the table view
         for (int i = 0; i < companyDataList.size(); i++) {
             String[] singleCompanyDataValue = { String.valueOf(companyDataList.get(i).getCompanyRank()),
                     companyDataList.get(i).getCompanyName(), String.valueOf(companyDataList.get(i).getCompanySales()),
@@ -121,9 +132,9 @@ public class TableAppViewSearch extends Application {
 
         final TableView tableView = new TableView();
         tableView.setItems(data);
-        tableView.getColumns().addAll(numberCol, globalRank, companyName, companySales, companyProfits, companyAssets,
-                companyMarketValue, companyType, companyDescription);
+        tableView.getColumns().addAll(numberCol, globalRank, companyName, companySales, companyProfits, companyAssets, companyMarketValue, companyType, companyDescription);
 
+        
         // SETTING UP BUTTONS  
         StackPane spLineChart = new StackPane();
         spLineChart.getChildren().add(tableView);
@@ -168,7 +179,6 @@ public class TableAppViewSearch extends Application {
                 individualrecordScene = individualRecord.getScene(importedStage, companyDataList.get(Integer.parseInt(choiceBox.getValue())));
                 importedStage.setScene(individualrecordScene);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
@@ -176,7 +186,7 @@ public class TableAppViewSearch extends Application {
         spInfoButton.getChildren().add(btnInfo);
 
 
-        // MAIN MENUE
+        // Making the Go Back Button
         Button button = new Button("<< Go Back");
         button.setOnMouseClicked((event)->{
             Main.setOwnStage(importedStage);
@@ -184,9 +194,11 @@ public class TableAppViewSearch extends Application {
         StackPane spButton = new StackPane();
         spButton.getChildren().add(button);
 
+
         // Vertical Wrapper
         VBox vbox = new VBox();
         VBox.setVgrow(spLineChart, Priority.ALWAYS);
+
         // Horizontal Wrapper #1
         Text sortSectionOne = new Text("Search Company Name: ");
         sortSectionOne.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
@@ -194,6 +206,7 @@ public class TableAppViewSearch extends Application {
         hbox.getChildren().addAll(sortSectionOne, textField, spSearchButton);
         hbox.setPadding(new Insets(25, 25, 25, 25));
         hbox.setAlignment(Pos.BASELINE_CENTER);
+
         // Horizontal Wrapper #2
         Text sortSectionTwo = new Text("View Company Individual Record: ");
         sortSectionTwo.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
@@ -201,6 +214,7 @@ public class TableAppViewSearch extends Application {
         hbox2.getChildren().addAll(sortSectionTwo, choiceBox, spInfoButton);
         hbox2.setPadding(new Insets(0, 25, 5, 25));
         hbox2.setAlignment(Pos.BASELINE_CENTER);
+
         // Horizontal Wrapper #3
         HBox hbox3 = new HBox(8);
         hbox3.getChildren().addAll(spButton);
@@ -208,27 +222,30 @@ public class TableAppViewSearch extends Application {
         hbox3.setPadding(new Insets(5, 5, 5, 5));
         hbox3.setAlignment(Pos.BASELINE_RIGHT);
         
+        // Adding the table and the horizontal boxes to the vertical box
         vbox.getChildren().addAll(spLineChart, hbox, hbox2, hbox3);
         return vbox;
     }
  
-    @Override public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(createContent()));
-        primaryStage.show();
-    }
- 
 
-    // Sending the scene to the main javafx file
+    /**
+     * A method that sends the table search view scene back to the main 
+     * stage in the Main.java
+     * 
+     * @param theStage  This parameter gets the main.java stage so 
+     * that it's able to set the main stage to a different scene later
+     * @return  A scene from the createContent method
+     */
     public Scene getScene(Stage theStage) throws IOException {
         importedStage = theStage;
         return new Scene(createContent(), 800, 500);
     }
 
+    
     /**
-     * Java main for when running without JavaFX launcher
+     * A method required by the javafx library for independant running
+     * 
+     * @param primaryStage  A stage created by this java file
      */
-    public static void main(String[] args) throws IOException {
-        CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
-        launch(args);
-    }
+    @Override public void start(Stage primaryStage) throws Exception {}
 }

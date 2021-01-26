@@ -19,14 +19,21 @@ import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * A javafx scene for displaying the individual record for a given company
+ * @author: Kevin Basta
+ */
 public class IndividualRecordView extends Application {
     private Stage importedStage;
-
     private ArrayList<Company> companyDataList = new ArrayList<Company>();
 
+    /**
+     * Method that creates all the javafx for the page and buttons
+     *
+     * @return Returns the container that the scene is made of
+     */
     public Parent createContent() throws IOException { 
-
-        // MAIN MENUE
+         // Making the go back to main menue button
         Button button = new Button("<< Go Back To Main Menue");
         button.setOnMouseClicked((event)->{
             Main.setOwnStage(importedStage);
@@ -34,16 +41,16 @@ public class IndividualRecordView extends Application {
         StackPane spButton = new StackPane();
         spButton.getChildren().add(button);
 
-        // MAIN MENUE
+         // Making the go back to search button
         Button buttonSearch = new Button("<< Go Back To Search");
         buttonSearch.setOnMouseClicked((event)->{
             TableAppViewSearch tableAppSearch = new TableAppViewSearch();
             Scene tableAppSearchScene;
+
             try {
                 tableAppSearchScene = tableAppSearch.getScene(importedStage);
                 importedStage.setScene(tableAppSearchScene);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
@@ -130,7 +137,7 @@ public class IndividualRecordView extends Application {
         hbox6.setPadding(new Insets(0, 100, 5, 100));
         hbox6.setAlignment(Pos.BASELINE_CENTER);
 
-        // Horizontal Wrapper #7 VALUES
+        // Horizontal Wrapper #7 DESCRIPTION
         String description = companyDataList.get(0).getCompanyDescription();
         
         Label label = new Label(description);
@@ -152,18 +159,20 @@ public class IndividualRecordView extends Application {
        hbox4.setMargin(spButton, new Insets(0, 30, 0, 75));
        hbox4.setPadding(new Insets(5, 5, 5, 5));
        hbox4.setAlignment(Pos.BASELINE_RIGHT);
-        
+
+       // Adding all the horizontal boxes to the vertical box
         vbox.getChildren().addAll(hbox, hbox2, hbox3, hbox5, hbox6, hbox7, hbox4);
         return vbox;
-    }
- 
-    @Override public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(createContent(), 800, 500));
-        primaryStage.show();
-    }
- 
+    } 
 
-    // Sending the scene to the main javafx file
+    /**
+     * A method that sends the scene back to the main stage in the Main.java
+     * 
+     * @param theStage This parameter gets the main.java stage so that it's able to
+     * set the main stage to a different scene later
+     * @param companyObject This passes the company object to display information about
+     * @return A scene from the createContent method
+     */
     public Scene getScene(Stage theStage, Company companyObject) throws IOException {
         companyDataList.clear();
         companyDataList.add(companyObject);
@@ -172,12 +181,9 @@ public class IndividualRecordView extends Application {
     }
 
     /**
-     * Java main for when running without JavaFX launcher
+     * A method required by the javafx library for independant running
+     * 
+     * @param primaryStage A stage created by this java file
      */
-    public static void main(String[] args) throws IOException {
-        CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
-        launch(args);
-    }
-
-    
+    @Override public void start(Stage primaryStage) throws Exception {}
 }

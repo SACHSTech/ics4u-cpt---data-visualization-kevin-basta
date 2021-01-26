@@ -15,16 +15,28 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-
+/**
+ * The home page of the javafx gui
+ * @author: Kevin Basta
+ */
 public class Main extends Application {
-    // Main method that launches the Javafx gui
+    public static Scene mianScene;
+
+    /**
+     * Main method that launches the Javafx gui
+     * @param args defult main method parameter
+     */
     public static void main(String[] args) throws IOException {
         CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
         launch(args);
     }
 
-    public static Scene mianScene;
-
+    
+    /**
+     * A method that creates the home page gui
+     * 
+     * @param primaryStage  The main stage where all the scenes are shown
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Japan Company Dataset Program");
@@ -46,7 +58,6 @@ public class Main extends Application {
             }
         });
 
-
         // BAR CHART BUTTON
         Button barButton = new Button("Bar Graph");
         barButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -63,7 +74,6 @@ public class Main extends Application {
                 }
             }
         });
-
 
         // PIE CHART BUTTON
         Button pieButton = new Button("Pie Chart");
@@ -82,7 +92,6 @@ public class Main extends Application {
             }
         });
 
-
         // TABLE VIEW BUTTON
         Button tableView = new Button("Filter and Sort");
         tableView.setOnAction(new EventHandler<ActionEvent>() {
@@ -98,8 +107,7 @@ public class Main extends Application {
                     e.printStackTrace();
                 }
             }
-        });
-        
+        });        
 
         // SEARCH BUTTON
         Button searchView = new Button("Search and View Records");
@@ -117,7 +125,6 @@ public class Main extends Application {
                 }
             }
         });
-
 
        // SUMMARY BUTTON
        Button summaryView = new Button("Data Summary");
@@ -170,7 +177,7 @@ public class Main extends Application {
         hbox3.setPadding(new Insets(0, 100, 50, 100));
         hbox3.setAlignment(Pos.BASELINE_CENTER);
 
-        // View Summary
+        // View Summary section
         Text summaryText = new Text("Summary - ");
         summaryText.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         HBox hbox4 = new HBox(8);
@@ -183,19 +190,31 @@ public class Main extends Application {
         // Putting all the Hboxes into the Vbox
         vbox.getChildren().addAll(hbox, hbox2, hbox3, hbox4);
 
-        // The Main Page Scene
+        // Making and setting the Main Page Scene
         mianScene = new Scene(vbox, 800, 500);
         primaryStage.setScene(mianScene);
         primaryStage.show();
     }
-
-    // Setting the Scene back to main scene
-    public static void setOwnStage(Stage primaryStageImport) {
-        primaryStageImport.setScene(mianScene);
-    }
-
+    
+    /**
+     * A method that that sets the Stage to a scene from another file
+     * 
+     * @param primaryStageImport  This parameter gets the main.java stage but from
+     * the file that calls the method
+     * @param newScene  This parameter is the scene that is generated from another file
+     */
     public static void setOwnScene(Stage primaryStageImport, Scene newScene) {
         primaryStageImport.setScene(newScene);
+    }
+
+    /**
+     * A method that that sets the Stage back to the main scene
+     * 
+     * @param primaryStageImport  This parameter gets the main.java stage but from
+     * the file that calls the method
+     */
+    public static void setOwnStage(Stage primaryStageImport) {
+        primaryStageImport.setScene(mianScene);
     }
 
 }

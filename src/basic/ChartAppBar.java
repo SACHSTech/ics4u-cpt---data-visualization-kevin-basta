@@ -18,11 +18,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 /**
-* A chart that displays rectangular bars with heights indicating data sales
-* value for each category. Each rectangular bar has different colours indicating
-* a different company in that catagory.
-* @author: Kevin Basta
-*/
+ * A chart that displays rectangular bars with heights indicating data sales
+ * value for each category. Each rectangular bar has different colours indicating
+ * a different company in that catagory.
+ * @author: Kevin Basta
+ */
 public class ChartAppBar extends Application {
  
     private Stage importedStage;
@@ -32,10 +32,10 @@ public class ChartAppBar extends Application {
     private NumberAxis yAxis;
     
     /**
-    * Method that creates all the javafx for the bar chart and buttons
-    *
-    * @return Returns the container that the scene is made of
-    */
+     * Method that creates all the javafx for the bar chart and buttons
+     *
+     * @return Returns the container that the scene is made of
+     */
     private Parent createContent() throws IOException {
         // Making the BarChart
         namesXAxis = new CategoryAxis();
@@ -61,7 +61,6 @@ public class ChartAppBar extends Application {
         // Making the Go Back Button
         Button button = new Button("<< Go Back");
         button.setOnMouseClicked((event)->{
-
             Main.setOwnStage(importedStage);
         });
 
@@ -81,13 +80,13 @@ public class ChartAppBar extends Application {
  
 
     /**
-    * A method that sends the chart scene back to the main stage
-    * in the Main.java
-    * 
-    * @param theStage  This parameter gets the main.java stage so 
-    * that it's able to set the main stage to a different scene later
-    * @return  A scene from the createContent method
-    */
+     * A method that sends the chart scene back to the main stage
+     * in the Main.java
+     * 
+     * @param theStage  This parameter gets the main.java stage so 
+     * that it's able to set the main stage to a different scene later
+     * @return  A scene from the createContent method
+     */
     public Scene getScene(Stage theStage) throws IOException {
       this.companyList = CompanyList.selectionSortDouble(2);
       this.importedStage = theStage;
@@ -96,9 +95,9 @@ public class ChartAppBar extends Application {
     
 
     /**
-    * A method required by the javafx library for independant running
-    * 
-    * @param primaryStage  A stage created by this java file
-    */
+     * A method required by the javafx library for independant running
+     * 
+     * @param primaryStage  A stage created by this java file
+     */
     @Override public void start(Stage primaryStage) throws Exception {}
 }

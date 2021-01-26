@@ -18,7 +18,6 @@ import javafx.scene.layout.VBox;
  * A circular chart divided into segments. The value of each segment represents
  * a proportion of the total. Shows the top 5 Assets as well as an other catagory
  * containing all assets values of the rest of the csv file.
- *
  * @author: Kevin Basta
  */
 public class ChartAppPie extends Application {
@@ -28,8 +27,8 @@ public class ChartAppPie extends Application {
     private PieChart chart;
 
     /**
-    * Method that creates the pie chart
-    */
+     * Method that creates the pie chart
+     */
     private void generateData() {
         // Setting up the PieChart
         chart = new PieChart();
@@ -54,10 +53,10 @@ public class ChartAppPie extends Application {
  
 
     /**
-    * Method that creates all the javafx for the pie chart and buttons
-    *
-    * @return Returns the container that the scene is made of
-    */
+     * Method that creates all the javafx for the pie chart and buttons
+     *
+     * @return Returns the container that the scene is made of
+     */
     public Parent createContent() {
         // Calling the method to create the pie chart
         generateData();
@@ -86,13 +85,13 @@ public class ChartAppPie extends Application {
     
  
     /**
-    * A method that sends the chart scene back to the main stage
-    * in the Main.java
-    * 
-    * @param theStage  This parameter gets the main.java stage so 
-    * that it's able to set the main stage to a different scene later
-    * @return  A scene from the createContent method
-    */
+     * A method that sends the chart scene back to the main stage
+     * in the Main.java
+     * 
+     * @param theStage  This parameter gets the main.java stage so 
+     * that it's able to set the main stage to a different scene later
+     * @return  A scene from the createContent method
+     */
     public Scene getScene(Stage theStage) throws IOException {
         companyList = CompanyList.selectionSortDouble(4);
         importedStage = theStage;
@@ -101,9 +100,9 @@ public class ChartAppPie extends Application {
 
 
     /**
-    * A method required by the javafx library for independant running
-    * 
-    * @param primaryStage  A stage created by this java file
-    */
+     * A method required by the javafx library for independant running
+     * 
+     * @param primaryStage  A stage created by this java file
+     */
     @Override public void start(Stage primaryStage) throws Exception {}
 }

@@ -16,16 +16,23 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+/**
+ * A javafx scene for displaying the summary data of the data set
+ * @author: Kevin Basta
+ */
 public class DataSummary extends Application {
     private Stage importedStage;
-
     private String[] strDataSummary;
 
-    public Parent createContent() throws IOException { 
-
-        // MAIN MENUE
+    /**
+     * Method that creates all the javafx for the summary page and buttons
+     *
+     * @return Returns the container that the scene is made of
+     */
+    public Parent createContent() throws IOException {
+        // Making the Go Back Button
         Button button = new Button("<< Go Back");
-        button.setOnMouseClicked((event)->{
+        button.setOnMouseClicked((event) -> {
             Main.setOwnStage(importedStage);
         });
         StackPane spButton = new StackPane();
@@ -34,7 +41,7 @@ public class DataSummary extends Application {
         // Vertical Wrapper
         VBox vbox = new VBox();
 
-        //Horizontal Wrapper #0
+        // Horizontal Wrapper #0
         Text summaryTitle = new Text("Japanese Largest Companies");
         summaryTitle.setFont(Font.font("Tahoma", FontWeight.BLACK, 35));
         HBox hbox0 = new HBox(30);
@@ -82,7 +89,6 @@ public class DataSummary extends Application {
         hbox3.setPadding(new Insets(0, 75, 50, 75));
         hbox3.setAlignment(Pos.BASELINE_CENTER);
 
-
         // Horizontal Wrapper #5 SMALL TITLES
         Text AverageProfit = new Text("AVERAGE PROFIT (billion)");
         AverageProfit.setFont(Font.font("Tahoma", FontWeight.LIGHT, 10));
@@ -115,24 +121,25 @@ public class DataSummary extends Application {
         hbox6.setPadding(new Insets(0, 100, 5, 100));
         hbox6.setAlignment(Pos.BASELINE_CENTER);
 
-       // Horizontal Wrapper #4 RETURN BUTTONS
-       HBox hbox4 = new HBox(8);
-       hbox4.getChildren().addAll(spButton);
-       hbox4.setMargin(spButton, new Insets(0, 30, 0, 75));
-       hbox4.setPadding(new Insets(5, 5, 5, 5));
-       hbox4.setAlignment(Pos.BASELINE_RIGHT);
-        
+        // Horizontal Wrapper #4 RETURN BUTTON
+        HBox hbox4 = new HBox(8);
+        hbox4.getChildren().addAll(spButton);
+        hbox4.setMargin(spButton, new Insets(0, 30, 0, 75));
+        hbox4.setPadding(new Insets(5, 5, 5, 5));
+        hbox4.setAlignment(Pos.BASELINE_RIGHT);
+
+        // Adding all the horizontal boxes to the vertical box
         vbox.getChildren().addAll(hbox0, hbox, hbox2, hbox3, hbox5, hbox6, hbox4);
         return vbox;
     }
- 
-    @Override public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(createContent(), 800, 500));
-        primaryStage.show();
-    }
- 
 
-    // Sending the scene to the main javafx file
+    /**
+     * A method that sends the summary scene back to the main stage in the Main.java
+     * 
+     * @param theStage This parameter gets the main.java stage so that it's able to
+     * set the main stage to a different scene later
+     * @return A scene from the createContent method
+     */
     public Scene getScene(Stage theStage) throws IOException {
         strDataSummary = CompanyList.getDataSummary();
         importedStage = theStage;
@@ -140,12 +147,11 @@ public class DataSummary extends Application {
     }
 
     /**
-     * Java main for when running without JavaFX launcher
+     * A method required by the javafx library for independant running
+     * 
+     * @param primaryStage A stage created by this java file
      */
-    public static void main(String[] args) throws IOException {
-        CompanyList Japan = new CompanyList("Japan_largest_companies_edited.csv");
-        launch(args);
+    @Override
+    public void start(Stage primaryStage) throws Exception {
     }
-
-    
 }
