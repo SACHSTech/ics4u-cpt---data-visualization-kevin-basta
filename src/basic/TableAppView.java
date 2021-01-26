@@ -119,6 +119,19 @@ public class TableAppView extends Application {
         StackPane spRankButton = new StackPane();
         spRankButton.getChildren().add(btnRank);
 
+        // NAME SORT
+        Button btnName = new Button("Name");
+        btnName.setOnMouseClicked((event) -> {
+            try {
+                companyDataList = CompanyList.selectionSortString();
+                Main.setOwnScene(importedStage, new Scene(createContent(), 800, 500));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        StackPane spNameButton = new StackPane();
+        spNameButton.getChildren().add(btnName);
+
         // SALES SORT
         Button btnSales = new Button("Sales");
         btnSales.setOnMouseClicked((event) -> {
@@ -383,7 +396,7 @@ public class TableAppView extends Application {
         Text sortSectionOne = new Text("Sort By Value: ");
         sortSectionOne.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         HBox hbox = new HBox(8);
-        hbox.getChildren().addAll(sortSectionOne, spRankButton, spSalesButton, spProfitsButton, spAssetsButton, spMarketValueButton);
+        hbox.getChildren().addAll(sortSectionOne, spRankButton, spNameButton, spSalesButton, spProfitsButton, spAssetsButton, spMarketValueButton);
         hbox.setPadding(new Insets(25, 190, 25, 25));
         hbox.setAlignment(Pos.BASELINE_CENTER);
         

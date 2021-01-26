@@ -165,6 +165,31 @@ public class CompanyList {
     }
 
     /**
+     * A sort method that sorts for all the string name values
+     *
+     * @return An array list that has the sorted array
+     */
+    public static ArrayList<Company> selectionSortString() {
+        ArrayList<Company> newSortedCompanyList = companyList;
+
+        for (int j = 0; j < newSortedCompanyList.size() - 1; j++) {
+            int min = j;
+            for (int k = j + 1; k < newSortedCompanyList.size(); k++) {
+                if (newSortedCompanyList.get(k).getCompanyName().compareTo(newSortedCompanyList.get(min).getCompanyName()) < 0) {
+                    min = k;
+                }  
+            }
+            
+            // Swap the reference at j with the reference at min 
+            Company temp = newSortedCompanyList.get(j);
+            newSortedCompanyList.set(j, newSortedCompanyList.get(min));
+            newSortedCompanyList.set(min, temp);
+        }
+
+        return newSortedCompanyList;
+    }
+
+    /**
      * A method that calculates statistics about the data set
      *
      * @return An array that has all the summary data
