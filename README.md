@@ -19,4 +19,4 @@
 * [Click Here for Demo Video](https://drive.google.com/file/d/1MycsAYlNOO0ryRzoBSYlhuvgbYWOaJQR/view?usp=sharing)
 
 ### Course Connections 
-* [Click Here for Course Connections Video](https://drive.google.com/file/d/1yw6EG21b__b0Hb12DIGqcBV2Ean-pTTN/view?usp=sharing)
+* [Click Here for Course Connections Video](https://drive.google.com/file/d/1pVp0t3QNaweUM5z3kTE_xVDHBwH-eO1z/view?usp=sharing)

@@ -79,7 +79,7 @@ public class CompanyList {
         }
 
         if (newCompnayListForSearch.isEmpty()) {
-            String[] notFound = { "1", "not found", "2", "3", "4", "5", "not found", "not found" };
+            String[] notFound = {"1", "not found", "2", "3", "4", "5", "not found", "not found"};
             newCompnayListForSearch.add(new Company(notFound));
             return newCompnayListForSearch;
         } else {
